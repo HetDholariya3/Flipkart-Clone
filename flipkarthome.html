@@ -1,0 +1,252 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flipkart Clone - Online Shopping</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="home.css">
+        <link rel="stylesheet" href="responsive.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <a href="flipkarthome.html" class="logo">
+                    <img src="images/Flipkart_logo_PNG17.png" alt="Flipkart">
+                </a>
+                
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="search" id="search-input" placeholder="Search for products, brands and more" onkeydown="handleSearch(event)">
+                </div>           
+                
+                <ul class="nav-links">
+                    <li>
+                        <a href="login.html">
+                            <i class="fas fa-user nav-icon"></i>
+                            <span>Login</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-ellipsis-v nav-icon"></i>
+                            <span>More</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cart.html">
+                            <i class="fas fa-shopping-cart nav-icon"></i>
+                            <span>Cart</span>
+                            <span class="cart-counter"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        
+        <!-- Categories -->
+        <div class="categories">
+            <a href="top_offers.html" class="category-item">
+                <img src="images/top-offer.png" alt="Top Offers">
+                <p>Top Offers</p>
+            </a>
+            <a href="mobiles.html" class="category-item">
+                <img src="images/Mobiles & Tablets.png" alt="Mobiles">
+                <p>Mobiles</p>
+            </a>
+            <a href="Fashion.html" class="category-item">
+                <img src="images/fashion.png" alt="Fashion">
+                <p>Fashion</p>
+            </a>
+            <a href="electronics.html" class="category-item">
+                <img src="images/electronics.png" alt="Electronics">
+                <p>Electronics</p>
+            </a>
+            <a href="tvs_appliances.html" class="category-item">
+                <img src="images/TVs & Appliances.png" alt="TVs & Appliances">
+                <p>TVs & Appliances</p>
+            </a>
+            <a href="Beauty.html" class="category-item">
+                <img src="images/beauty.png" alt="Beauty">
+                <p>Beauty</p>
+            </a>
+            <a href="Furniture.html" class="category-item">
+                <img src="images/furniture.png" alt="Furniture">
+                <p>Furniture</p>
+            </a>
+        </div>
+        
+        <!-- Hero Banner -->
+        <div class="hero">
+            <img src="images/hurr.png" alt="Big Billion Days Sale">
+        </div>
+        
+        <!-- Deals Section -->
+        <div class="deals-section">
+            <h2 class="section-title">Deals of the Day</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-product-id="prod1">
+                    <img src="images/s2.png" alt="Product 1" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Samsung Galaxy S21 FE 5G</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i> 4.4
+                        </div>
+                        <div>
+                            <span class="product-price">₹39,999</span>
+                            <span class="original-price">₹54,999</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" data-product-id="prod2">
+                    <img src="images/dd.png" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">OnePlus Nord CE 2 Lite 5G</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i> 4.2
+                        </div>
+                        <div>
+                            <span class="product-price">₹18,999</span>
+                            <span class="original-price">₹26,999</span>
+                            <span class="discount"></span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product-card" data-product-id="prod3">
+                    <img src="images/14 pro.png" alt="Product 3" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Iphone 14</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i> 4.6
+                        </div>
+                        <div>
+                            <span class="product-price">₹1,19,999</span>
+                            <span class="original-price">₹1,99,999</span>
+                            <span class="discount"></span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+
+                
+                <!-- Add more products as needed -->
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Help</h3>
+                    <ul>
+                        <li><a href="#">Payments</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Policy</h3>
+                    <ul>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Flipkart Clone. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script src="main.js"></script>
+        <script>
+            function handleSearch(event) {
+              if (event.key === "Enter") {
+                const query = document.getElementById("search-input").value.trim().toLowerCase();
+                if (
+                    query.includes("iphone") ||
+                    query.includes("samsung") ||
+                    query.includes("redmi") ||
+                    query.includes("vivo") ||
+                    query.includes("poco") ||
+                    query.includes("galaxy") ||
+                    query.includes("realme") 
+                ) {
+                    localStorage.setItem("searchQuery", query);  
+                    window.location.href = "mobiles.html";       
+                }else if (query.includes("urbano") || query.includes("dress") || query.includes("moda") || query.includes("pink")) {
+                    localStorage.setItem("searchQuery", query);  // Store the search keyword
+                    window.location.href = "fashion.html";       // Redirect to fashion page
+                }
+                else if (
+                    query.includes("iron") || query.includes("geyser") || query.includes("fan") ||
+                    query.includes("dryer") || query.includes("heater") || query.includes("nova") ||
+                    query.includes("philips") || query.includes("livpure") || query.includes("orient")
+                ) {
+                    localStorage.setItem("searchQuery", query);
+                    window.location.href = "electronics.html";
+                } else if (
+                    query.includes("samsung") || query.includes("lg") || query.includes("sony") || query.includes("refrigerator")
+                ){
+                    localStorage.setItem("searchQuery", query);
+                    window.location.href = "tvs_appliances.html";
+                } else if (    
+                    query.includes("boroplus") ||
+                    query.includes("cream") ||
+                    query.includes("facewash") ||
+                    query.includes("makeup") ||
+                    query.includes("clean & clear")
+                ) {
+                    localStorage.setItem("searchQuery", query);
+                    window.location.href = "beauty.html";
+                }else if (
+                    query.includes("bed") ||
+                    query.includes("sofa") ||
+                    query.includes("table") ||
+                    query.includes("chair") ||
+                    query.includes("almirah") ||
+                    query.includes("mandir") ||
+                    query.includes("furniture") ||
+                    query.includes("bunk")
+                ) {
+                    localStorage.setItem("searchQuery", query);
+                    window.location.href = "furniture.html";
+                }
+                
+            }
+        }
+        </script>
+            
+            
+        </body>
+    </html>

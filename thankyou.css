@@ -1,0 +1,25 @@
+.hero {
+    max-width: 600px;
+    margin: 80px auto;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .hero .add-to-cart {
+    background: #2874f0;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 3px;
+  }
+  
