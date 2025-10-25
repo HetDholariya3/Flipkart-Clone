@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beauty</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="beauty.css">
+
+</head>
+<body>
+ <a href="index.html"><input type="button" value="Back"></a> <br><br>
+<div class="Top"><!--marquee-->
+    <marquee >
+       <h1>New Brand</h1>
+    </marquee>
+</div>
+<center><table >
+	<tr>
+		<td class="img">
+			<img src="images/Bt5.png">
+			<h3>BOROPLUS Soft Ayurvedic Antiseptic Cream<br> 200ml + Doodh ...</h3>
+			<h3 class="gray">600 ml</h3>
+			<h3><span class="green">4.4⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">(696)</b></h3>
+			<h3 class="Black">₹171&nbsp;&nbsp;<del class="gray">₹685</del>&nbsp;&nbsp;75% off</h3>
+			<h3 style="color:purple">Festive Special Deal</h3>
+			<!-- Add to Cart button -->
+			<button class="add-to-cart-btn">Add to Cart</button>
+		</td>
+		 
+	 <td class="img">
+	   <img src="images/Bt6.png">
+	   <h3>PureSense Opulence Perfume Gift Set (Silk + <br>Velvet + Sa...</h3>
+	   <h3 class="gray">For Men & Women</h3>
+	   <h3><span class="green">4.3⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">(1,512)</b></h3>
+	   <h3 class="Black">₹169&nbsp;&nbsp;<del class="gray">₹849</del>&nbsp;&nbsp;80% off</h3>
+    	<h3 style="color:green">Buy 2 items, save extra 10%</h3>	
+		<button class="add-to-cart-btn">Add to Cart</button>
+	 </td>
+	 <td class="img">
+	   <img src="images/Bt7.png">
+	   <h3 >Clean & Clear Foaming Face wash 390ml|<br> Clinically prove...</h3>
+	   <h3 class="gray">390 ml</h3>
+	   <h3><span class="green">4.5⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">(1,78,419)</b></h3>
+	   <h3 class="Black">₹243&nbsp;&nbsp;<del class="gray">₹540</del>&nbsp;&nbsp;55% off</h3>
+       <h3 style="color:purple">Festive Special Deal</h3>	   
+	   <button class="add-to-cart-btn">Add to Cart</button>
+	 </td>
+	 <td class="img">
+	   <img src="images/Bt8.png">
+	   <h3 >COLORESSENCE MAKE-UP PANSTICK FAIR -<br> PEACH Concealer</h3>
+	   <h3 class="gray">PEACH, 10 g</h3>
+	   <h3><span class="green">4⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">(6,151)</b></h3>
+	   <h3 class="Black">₹148&nbsp;&nbsp;<del class="gray">₹199</del>&nbsp;&nbsp;26% off</h3>
+       <h3 style="color:purple">Festive Special Deal</h3>	 
+	   <button class="add-to-cart-btn">Add to Cart</button>  
+	 </td>
+	</tr>
+   </table></center>
+<center><table >
+    <tr>
+	  <td class="img">
+	    <img src="images/Bt1.png">
+		<h3 >DAIMANPU Candy Bella Long-lasting Oil<br> Control Setting P...</h3>
+		<h3 class="gray">Sky Blue, 11 ml</h3>
+		<h3 class="Black">₹499&nbsp;&nbsp;<del class="gray">₹1,299</del>&nbsp;62% off</h3>
+		<button class="add-to-cart-btn">Add to Cart</button>
+	  </td>	
+	  <td class="img">
+	   <img src="images/Bt2.png">
+	   <h3 >Just Herbs Mattifying & Hydrating Face<br>Compact Powder W...</h3>
+	   <h3 class="gray">Porcelain, 9 g</h3>
+	   <h3><span class="green">4⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">(2,529)</b></h3>
+	   <h3 class="Black">₹331&nbsp;&nbsp;<del style="color:gray">₹645</del>&nbsp;&nbsp;49% off</h3> 
+	   <h3 style="color:green">Buy 2 items, save extra 10%</h3>
+	   <button class="add-to-cart-btn">Add to Cart</button>
+	 </td>
+	 <td class="img">
+	   <img src="images/Bt3.png">
+	   <h3 >IGOODCO 5 in 1 Compact Long Lasting 24 Hrs.<br> Perfect Ski..</h3>
+	   <h3 class="gray">Multicolor, 45 g</h3>
+	   <h3><span class="green">4⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">(783)</b></h3>
+	   <h3 class="Black">₹259&nbsp;&nbsp;<del class="gray">₹899</del>&nbsp;&nbsp;71% off</h3> 
+	   <button class="add-to-cart-btn">Add to Cart</button>
+	 </td>
+	 <td class="img">
+	   <img src="images/Bt4.png">
+	   <h3>ZM Zayn & Myza Pollution Defense CC <br>With SPF 30 Compac...</h3>
+	   <h3 class="gray">Classic Ivory, 9 g</h3>
+	   <h3><span class="green">4.4⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">(403)</b></h3>
+	   <h3 class="Black">₹224&nbsp;&nbsp;<del class="gray">₹549</del>&nbsp;&nbsp;59% off</h3>
+       <h3 style="color:purple">Top Discount of the Sale</h3>	   
+	   <button class="add-to-cart-btn">Add to Cart</button>	
+	 </td>
+	 </tr>
+  </table></center>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const td = button.closest(".img");
+        const name = td.querySelectorAll("h3")[0]?.textContent.trim();
+        const image = td.querySelector("img")?.getAttribute("src");
+
+        // Extract price and original price from .Black h3 using ₹ symbol
+        const priceLine = td.querySelector(".Black")?.textContent || "";
+        const prices = priceLine.match(/₹[\d,]+/g);
+        const price = prices?.[0]?.replace(/[^\d]/g, "") || "0";
+        const originalPrice = prices?.[1]?.replace(/[^\d]/g, "") || price;
+
+        const product = {
+          name: name,
+          price: parseInt(price),
+          originalPrice: parseInt(originalPrice),
+          image: image,
+          quantity: 1
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existingIndex = cart.findIndex(item => item.name === product.name);
+        if (existingIndex !== -1) {
+          cart[existingIndex].quantity += 1;
+        } else {
+          cart.push(product);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${product.name} added to cart!`);
+      });
+    });
+  });
+</script>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+	  const searchQuery = localStorage.getItem("searchQuery");
+	  if (!searchQuery) return;
+	
+	  const items = document.querySelectorAll("td.img");
+	  let match = null;
+	
+	  items.forEach(td => {
+		const title = td.querySelector("h3")?.textContent.toLowerCase();
+		if (title && title.includes(searchQuery.toLowerCase())) {
+		  match = td.cloneNode(true); 
+		}
+	  });
+	
+	  if (match) {
+		const resultContainer = document.createElement("div");
+		resultContainer.style.margin = "50px auto";
+		resultContainer.style.maxWidth = "1100px";
+		resultContainer.style.padding = "20px";
+		resultContainer.style.textAlign = "center";
+		resultContainer.style.borderTop = "2px solid #ccc";
+	
+		const title = document.createElement("h2");
+		title.textContent = "Search Result";
+		title.style.marginBottom = "20px";
+		title.style.color = "darkslateblue";
+	
+		const table = document.createElement("table");
+		const tr = document.createElement("tr");
+		const td = document.createElement("td");
+		td.appendChild(match);
+		tr.appendChild(td);
+		table.appendChild(tr);
+		table.style.margin = "0 auto";
+	
+		resultContainer.appendChild(title);
+		resultContainer.appendChild(table);
+		document.body.appendChild(resultContainer);
+	
+		resultContainer.scrollIntoView({ behavior: "smooth" });
+	  }
+	
+	  localStorage.removeItem("searchQuery");
+	});
+	</script>
+	
+</body>
+</html>

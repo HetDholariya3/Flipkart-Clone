@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smartphone Store</title>
+  <link rel="stylesheet" href="mobile.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Smartphone Deals</h1>
+  </header>
+
+  <main class="product-container">
+    <!-- Product Template -->
+    <div class="product-card">
+      <img src="images/white14.png" alt="iPhone 14" />
+      <h3>Iphone 14</h3>
+      <p>Brand: Apple</p>
+      <p class="price">
+        <span class="product-price">₹79,999</span>
+        <span class="original-price">₹99,999</span>
+        <span class="discount">20% off</span>
+      </p>
+      <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/s3.png" alt="Samsung Galaxy S23" />
+      <h3>Samsung Galaxy S23</h3>
+      <p>Brand: Samsung</p>
+      <p class="price">
+        <span class="product-price">₹74,999</span>
+        <span class="original-price">₹99,999</span>
+        <span class="discount">25% off</span>
+      </p>
+      <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+
+
+    <div class="product-card">
+      <img src="images/x1.png" alt="Redmi Note 10 Pro" />
+      <h3>Redmi Note 10 Pro</h3>
+      <p>Brand: Redmi</p>
+      <p class="price">
+        <span class="product-price">₹64,999</span>
+        <span class="original-price">₹76,499</span>
+        <span class="discount">15% off</span>
+      </p>
+      <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/v2.png" alt="VIVO T2 Pro" />
+      <h3>VIVO T2 Pro</h3>
+      <p>Brand: VIVO</p>
+      <p class="price">
+        <span class="product-price">₹69,999</span>
+        <span class="original-price">₹85,365</span>
+        <span class="discount">18% off</span>
+      </p>
+      <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/neo3.png" alt="Realme GT Neo 3" />
+      <h3>Realme GT Neo 3</h3>
+      <p>Brand: Realme</p>
+      <p class="price">
+        <span class="product-price">₹36,999</span>
+        <span class="original-price">₹47,436</span>
+        <span class="discount">22% off</span>
+      </p>
+      <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/s1.png" alt="Galaxy F54 5G" />
+      <h3>Galaxy F54 5G</h3>
+      <p>Brand: Samsung</p>
+      <p class="price">
+        <span class="product-price">₹38,499</span>
+        <span class="original-price">₹47,531</span>
+        <span class="discount">19% off</span>
+      </p>
+      <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/p1.png" alt="POCO X5 Pro" />
+      <h3>POCO X5 Pro</h3>
+      <p>Brand: POCO</p>
+      <p class="price">
+        <span class="product-price">₹32,999</span>
+        <span class="original-price">₹42,856</span>
+        <span class="discount">23% off</span>
+      </p>
+      <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="images/r77.png" alt="Realme 10 Pro" />
+      <h3>Realme 10 Pro</h3>
+      <p>Brand: Realme</p>
+      <p class="price">
+        <span class="product-price">₹39,999</span>
+        <span class="original-price">₹48,192</span>
+        <span class="discount">17% off</span>
+      </p>
+      <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+  </main>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".product-card");
+
+        const name = card.querySelector("h3").textContent.trim();
+        const priceText = card.querySelector(".product-price").textContent;
+        const originalPriceText = card.querySelector(".original-price").textContent;
+        const price = parseInt(priceText.replace(/[^\d]/g, ''));
+        const originalPrice = parseInt(originalPriceText.replace(/[^\d]/g, ''));
+        const brand = card.querySelector("p").textContent.replace("Brand: ", "").trim();
+        const image = card.querySelector("img").getAttribute("src");
+
+        const product = {
+          name: name,
+          price: price,
+          originalPrice: originalPrice,
+          brand: brand,
+          image: image,
+          quantity: 1
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existingIndex = cart.findIndex(item => item.name === product.name);
+        if (existingIndex !== -1) {
+          cart[existingIndex].quantity += 1;
+        } else {
+          cart.push(product);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${product.name} added to cart!`);
+      });
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const query = localStorage.getItem("searchQuery");
+    if (!query) return;
+  
+    const cards = document.querySelectorAll(".product-card");
+    let match = null;
+  
+    cards.forEach(card => {
+      const title = card.querySelector("h3").textContent.toLowerCase();
+      if (title.includes(query)) {
+        match = card.cloneNode(true);
+      }
+    });
+  
+    // Clear the query so it doesn't run again on refresh
+    localStorage.removeItem("searchQuery");
+  
+    if (match) {
+      // Create container to display matched result
+      const resultContainer = document.createElement("div");
+      resultContainer.style.borderTop = "2px solid #ccc";
+      resultContainer.style.margin = "50px auto";
+      resultContainer.style.maxWidth = "1100px";
+      resultContainer.style.padding = "20px";
+  
+      const title = document.createElement("h2");
+      title.textContent = "Search Result";
+      title.style.marginBottom = "15px";
+  
+      resultContainer.appendChild(title);
+      resultContainer.appendChild(match);
+  
+      document.body.appendChild(resultContainer); // Appending below everything including footer
+      resultContainer.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+  </script>
+  
+
+
+</body>
+</html>

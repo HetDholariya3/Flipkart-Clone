@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fashion</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="fashion.css">
+    
+</head>
+<body>
+  <a href="index.html"><input type="button" value="Back"></a><br><br>
+  
+<video autoplay loop controls >
+<source src="images/Alia_Gives_You_The_Key_to_being_a_Trendsetter(1080p).mp4" type="video/mp4" ></source>
+</video>
+<hr>
+<marquee>
+<h1>Popular Fashion</h1>
+</marquee>
+<hr>
+<center><table>
+<tr>
+    <td class="img">
+		<img src="images/ft6.png">
+		<h3 class="gray">Urbano Fashion</h3>
+		<h3>Men Slim Fit Light Blue Cotton...</h3>
+		<h3 class="Black">₹575&nbsp;&nbsp;<del class="gray">₹1,699</del>&nbsp;&nbsp;<span class="green">66% off</span></h3> 
+		<h3 class="box">Top Discount of the Sale</h3>
+		<h3><b class="gray">Size</b>&nbsp;&nbsp; <b class="Black">28, 30, 32, 34, 36, 38, 40</b></h3>
+		<button class="add-to-cart-btn">Add to Cart</button>
+	</td>
+	<td class="img">
+		<img src="images/ft7.png">
+		<h3 class="gray">Urbano Fashion</h3>
+		<h3>Men Slim Fit Grey Pure Cotton ...</h3>
+		<h3 class="Black">₹502&nbsp;&nbsp;<del style="color:gray">₹1,599</del>&nbsp;&nbsp;<span class="green">69% off</span></h3> 
+		<h3 style="color:purple">Big Saving Deal</h3>
+		<h3><b class="gray">Size</b>&nbsp;&nbsp;<b class="Black">32</b></h3>
+		<button class="add-to-cart-btn">Add to Cart</button>
+	</td>
+	 
+	<td class="img">
+		<img src="images/ft8.png">
+		<h3 class="gray">THE DRY STATE</h3>
+		<h3>Women Printed, Typography R...</h3>
+		<h3 class="Black">₹349&nbsp;&nbsp;<del class="gray">₹1,699</del>&nbsp;&nbsp;<span class="green">79% off</span></h3> 
+		<h3 style="color:red">Only few left</h3>
+		<h3><b class="gray">Size</b>&nbsp;&nbsp;<b class="Black">M</b></h3>
+		<button class="add-to-cart-btn">Add to Cart</button>
+	</td>
+	<td class="img">
+		<img src="images/ft9.png">
+		<h3 class="gray">GIGNAR</h3>
+		<h3>Women A-line Pink Dress</h3>
+		<h3 class="Black">₹459&nbsp;&nbsp;<del class="gray">₹1,245</del>&nbsp;&nbsp;<span class="green">63% off</span></h3> 
+		<h3 style="color:purple">Big Saving Deal</h3>
+		<h3><b class="gray">Size</b>&nbsp;&nbsp;<b class="Black">XS, S, M, L</b></h3>
+		<button class="add-to-cart-btn">Add to Cart</button>
+	</td>
+	<td class="img">
+		<img src="images/ft10.png">
+		<h3 class="gray">VERO MODA</h3>
+		<h3>Women Regular High Rise Pink...</h3>
+		<h3 class="Black"	>₹1,720&nbsp;&nbsp;<del class="gray">₹4,299</del>&nbsp;&nbsp;<span class="green">60% off</span></h3> 
+		<h3 style="color:purple">Big Saving Deal</h3>
+		<h3><b class="gray">Size</b>&nbsp;&nbsp;<b class="Black">26, 28, 30, 3</b></h3>
+		<button class="add-to-cart-btn">Add to Cart</button>
+	</td>
+	
+</tr>
+</table></center>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const card = button.closest("td");
+
+        const name = card.querySelectorAll("h3")[1].textContent.trim();
+        const priceText = card.querySelector(".Black")?.textContent || "₹0";
+
+        // Proper price extraction using RegExp
+        const priceMatch = priceText.match(/₹[\d,]+/g);
+        const price = priceMatch && priceMatch[0] ? parseInt(priceMatch[0].replace(/[^\d]/g, '')) : 0;
+        const originalPrice = priceMatch && priceMatch[1] ? parseInt(priceMatch[1].replace(/[^\d]/g, '')) : 0;
+
+        const image = card.querySelector("img")?.getAttribute("src");
+
+        const product = {
+          name: name,
+          price: price,
+          originalPrice: originalPrice,
+          image: image,
+          quantity: 1
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existingIndex = cart.findIndex(item => item.name === product.name);
+        if (existingIndex !== -1) {
+          cart[existingIndex].quantity += 1;
+        } else {
+          cart.push(product);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${product.name} added to cart!`);
+      });
+    });
+  });
+</script>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+	  const searchQuery = localStorage.getItem("searchQuery");
+	  if (!searchQuery) return;
+  
+	  const items = document.querySelectorAll("td.img");
+	  const matchedItems = [];
+  
+	  items.forEach(td => {
+		const title = td.querySelectorAll("h3")[1]?.textContent.toLowerCase(); // 2nd h3 is usually the product title
+		if (title && title.includes(searchQuery.toLowerCase())) {
+		  matchedItems.push(td.cloneNode(true));
+		}
+	  });
+  
+	  if (matchedItems.length > 0) {
+		const resultContainer = document.createElement("div");
+		resultContainer.style.margin = "50px auto";
+		resultContainer.style.maxWidth = "1100px";
+		resultContainer.style.padding = "20px";
+		resultContainer.style.textAlign = "center";
+		resultContainer.style.borderTop = "2px solid #ccc";
+  
+		const title = document.createElement("h2");
+		title.textContent = `Search Result for "${searchQuery}"`;
+		title.style.marginBottom = "20px";
+		title.style.color = "darkslateblue";
+  
+		const table = document.createElement("table");
+		const tr = document.createElement("tr");
+  
+		matchedItems.forEach(cloneTd => {
+		  tr.appendChild(cloneTd);
+		});
+  
+		table.appendChild(tr);
+		table.style.margin = "0 auto";
+  
+		resultContainer.appendChild(title);
+		resultContainer.appendChild(table);
+		document.body.appendChild(resultContainer);
+  
+		resultContainer.scrollIntoView({ behavior: "smooth" });
+	  } else {
+		alert(`No matching product found for "${searchQuery}" in Fashion.`);
+	  }
+  
+	  localStorage.removeItem("searchQuery");
+	});
+  </script>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+  const searchQuery = localStorage.getItem("searchQuery");
+  if (!searchQuery) return;
+
+  const items = document.querySelectorAll("td.img");
+  const matchedItems = [];
+
+  items.forEach(td => {
+    const h3s = td.querySelectorAll("h3");
+    const combinedText = Array.from(h3s).map(h3 => h3.textContent.toLowerCase()).join(" ");
+
+    if (combinedText.includes(searchQuery.toLowerCase())) {
+      matchedItems.push(td.cloneNode(true));
+    }
+  });
+
+  if (matchedItems.length > 0) {
+    const resultContainer = document.createElement("div");
+    resultContainer.style.margin = "50px auto";
+    resultContainer.style.maxWidth = "1100px";
+    resultContainer.style.padding = "20px";
+    resultContainer.style.textAlign = "center";
+    resultContainer.style.borderTop = "2px solid #ccc";
+
+    const title = document.createElement("h2");
+    title.textContent = `Search Result for "${searchQuery}"`;
+    title.style.marginBottom = "20px";
+    title.style.color = "darkslateblue";
+
+    const table = document.createElement("table");
+    const tr = document.createElement("tr");
+
+    matchedItems.forEach(cloneTd => {
+      tr.appendChild(cloneTd);
+    });
+
+    table.appendChild(tr);
+    table.style.margin = "0 auto";
+
+    resultContainer.appendChild(title);
+    resultContainer.appendChild(table);
+    document.body.appendChild(resultContainer);
+
+    resultContainer.scrollIntoView({ behavior: "smooth" });
+  } else {
+    alert(`No matching product found for "${searchQuery}" in Fashion.`);
+  }
+
+  localStorage.removeItem("searchQuery");
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Furniture</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Furniture.css">
+  
+</head>
+<body>
+  <a href="index.html"><input type="button" value="Back"></a><br><br>
+
+  <table>
+    <tr>
+      <td class="img">
+        <img src="images/fu1.png">
+        <h3>Flipkart Perfect Homes Studio Berlin Metal Queen Bed</h3>
+        <h4 style="color:gray">Finish Color - Dark Black, Delivery Condition - Knock Down</h4>
+        <h4 class="Black"><span class="green">4⭐</span> &nbsp;&nbsp;(245)</h4>
+        <h4 class="Black">₹6,519 &nbsp;<del style="color:gray">₹11,000</del> &nbsp;<span style="color:green">41% off</span></h4>
+        <h4 style="color:green">Bank Offer</h4>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </td>
+      <td class="img">
+        <img src="images/fu2.png">
+        <h3>Flipkart Perfect Homes Studio London Metal King Bed</h3>
+        <h4 style="color:gray">Finish Color - Dark Black, Delivery Condition - Knock Down</h4>
+        <h4 class="Black"><span class="green">4⭐</span> &nbsp;&nbsp;(456)</h4>
+        <h4 class="Black">₹7,194 &nbsp;<del style="color:gray">₹12,000</del> &nbsp;<span style="color:green">40% off</span></h4>
+        <h4 style="color:green">Bank Offer</h4>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </td>
+      <td class="img">
+        <img src="images/fu3.png">
+        <h3>Flipkart Homes Waltz Engineered Wood Queen Box</h3>
+        <h4 style="color:gray">Finish Color - American Espresso, Delivery Condition - Knock Down</h4>
+        <h4 class="Black"><span class="green">4⭐</span> &nbsp;&nbsp;(5,310)</h4>
+        <h4 class="Black">₹11,499 &nbsp;<del style="color:gray">₹32,999</del> &nbsp;<span style="color:green">65% off</span></h4>
+        <h4 style="color:green">Bank Offer</h4>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </td>
+      <td class="img">
+        <img src="images/fu4.png">
+        <h3>@Home by Nilkamal Nemo Metal Bunk Bed</h3>
+        <h4 style="color:gray">Finish Color - NA, Knock Down</h4>
+        <h4 class="Black"><span class="green">4.2⭐</span> &nbsp;&nbsp;(371)</h4>
+        <h4 class="Black">₹15,267 &nbsp;<del style="color:gray">₹25,900</del> &nbsp;<span style="color:green">41% off</span></h4>
+        <h4 style="color:green">Bank Offer</h4>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td class="img">
+        <img src="images/fu5.png">
+        <h3>CONTINENTAL 6+2 Shelves Portable Collapsible</h3>
+        <h4 style="color:gray">Finish Color - Grey, DIY(Do-It-Yourself)</h4>
+        <h4 class="Black"><span class="green">3.8⭐</span> &nbsp;&nbsp;(76,777)</h4>
+        <h4 class="Black">₹1,199 &nbsp;<del style="color:gray">₹2,499</del> &nbsp;<span style="color:green">52% off</span></h4>
+        <h4 style="color:green">Bank Offer</h4>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </td>
+      <td class="img">
+        <img src="images/fu6.png">
+        <h3>KAIZONE Foldable Table with Cup Holder</h3>
+        <h4 style="color:gray">Finish Color - Brown, Pre Assembled</h4>
+        <h4 class="Black"><span class="green">3.9⭐</span> &nbsp;&nbsp;(10,712)</h4>
+        <h4 class="Black">₹399 &nbsp;<del style="color:gray">₹1,999</del> &nbsp;<span style="color:green">80% off</span></h4>
+        <h4 style="color:green">Bank Offer</h4>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </td>
+      <td class="img">
+        <img src="images/fu7.png">
+        <h3>Heartily™ Mangal Pooja Mandir for Home</h3>
+        <h4 style="color:gray">Height: 39.5, DIY(Do-It-Yourself)</h4>
+        <h4 class="Black"><span class="green">4.1⭐</span> &nbsp;&nbsp;(1,103)</h4>
+        <h4 class="Black">₹1,199 &nbsp;<del style="color:gray">₹2,198</del> &nbsp;<span style="color:green">45% off</span></h4>
+        <h4 style="color:green">Bank Offer</h4>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </td>
+      <td class="img">
+        <img src="images/fu8.png">
+        <h3>Seventh Heaven Milan 3 Seater Sofa</h3>
+        <h4 style="color:gray">Finish Color - Brown, DIY(Do-It-Yourself)</h4>
+        <h4 class="Black"><span class="green">4.3⭐</span> &nbsp;&nbsp;(1,848)</h4>
+        <h4 class="Black">₹12,999 &nbsp;<del style="color:gray">₹43,330</del> &nbsp;<span style="color:green">70% off</span></h4>
+        <h4 style="color:green">Bank Offer</h4>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </td>
+    </tr>
+  </table>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".add-to-cart-btn");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const td = button.closest(".img");
+        const name = td.querySelector("h3")?.textContent.trim();
+        const image = td.querySelector("img")?.getAttribute("src");
+
+        // Extract price and original price from .Black h4 using ₹ symbol
+        const priceLine = Array.from(td.querySelectorAll(".Black"))
+          .map(el => el.textContent)
+          .find(text => text.includes("₹"));
+        const prices = priceLine.match(/₹[\d,]+/g);
+        const price = prices?.[0]?.replace(/[^\d]/g, "") || "0";
+        const originalPrice = prices?.[1]?.replace(/[^\d]/g, "") || price;
+
+        const product = {
+          name: name,
+          price: parseInt(price),
+          originalPrice: parseInt(originalPrice),
+          image: image,
+          quantity: 1
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existingIndex = cart.findIndex(item => item.name === product.name);
+        if (existingIndex !== -1) {
+          cart[existingIndex].quantity += 1;
+        } else {
+          cart.push(product);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${product.name} added to cart!`);
+      });
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchQuery = localStorage.getItem("searchQuery");
+    if (!searchQuery) return;
+
+    const items = document.querySelectorAll("td.img");
+    let match = null;
+
+    items.forEach(td => {
+      const title = td.querySelector("h3")?.textContent.toLowerCase();
+      if (title && title.includes(searchQuery.toLowerCase())) {
+        match = td.cloneNode(true); // Clone the matched item
+      }
+    });
+
+    if (match) {
+      const resultContainer = document.createElement("div");
+      resultContainer.style.margin = "50px auto";
+      resultContainer.style.maxWidth = "1100px";
+      resultContainer.style.padding = "20px";
+      resultContainer.style.textAlign = "center";
+      resultContainer.style.borderTop = "2px solid #ccc";
+
+      const title = document.createElement("h2");
+      title.textContent = "Search Result";
+      title.style.marginBottom = "20px";
+      title.style.color = "darkslateblue";
+
+      const table = document.createElement("table");
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
+         
+      td.style.padding = "10px"; 
+      td.appendChild(match);
+
+      tr.appendChild(td);
+      table.appendChild(tr);
+      table.style.margin = "0 auto";
+
+      resultContainer.appendChild(title);
+      resultContainer.appendChild(table);
+      document.body.appendChild(resultContainer);
+
+      resultContainer.scrollIntoView({ behavior: "smooth" });
+    }
+
+    localStorage.removeItem("searchQuery");
+  });
+</script>
+
+</body>
+</html>

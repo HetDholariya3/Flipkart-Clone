@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TVs & Appliances</title>
+    <link rel="stylesheet" href="tv.css" />
+</head>
+<body>
+
+  <a href="index.html"><input type="button" value="Back"></a>
+
+  <div class="Top">
+    <marquee><h1>Festive Special Deal</h1></marquee>
+  </div>
+
+  <center>
+    <table>
+      <tr>
+        <td class="img">
+          <img src="images/t1.png" alt="SAMSUNG TV" />
+          <h3>SAMSUNG 138 cm (55 inch) QLED Ultra HD (4K) Smart <br />Tizen TV (QA55QE1CAKLXL)</h3>
+          <h3 style="color:green;">Extra ₹40000 off</h3>
+          <h3><span class="green">4.2⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">123 Ratings & 17 Reviews</b></h3>
+          <h3 class="Black">₹59,990&nbsp;&nbsp;<del class="gray">₹99,990</del>&nbsp;&nbsp;40% off</h3>
+          <button class="add-to-cart">Add to Cart</button>
+        </td>
+
+        <td class="img">
+          <img src="images/t3.png" alt="LG TV" />
+          <h3>LG 139 cm (55 inch) OLED Ultra HD (4K) Smart WebOS <br />TV With Pixel Dimming & Magic Remote (OLED55A2PSA)</h3>
+          <h3><span class="green">4.4⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">410 Ratings & 74 Reviews</b></h3>
+          <h3 class="Black">₹89,990&nbsp;&nbsp;<del class="gray">₹1,39,990</del>&nbsp;&nbsp;36% off</h3>
+          <button class="add-to-cart">Add to Cart</button>
+        </td>
+
+        <td class="img">
+          <img src="images/t2.png" alt="SONY TV" />
+          <h3>SONY 138.8 cm (55 inch) Ultra HD (4K) LED Smart <br />Google TV 2022 Edition (KD-55X74K)</h3>
+          <h3 style="color:green;">Extra ₹3000 off</h3>
+          <h3><span class="green">4.6⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">13,593 Ratings & 2,670 Reviews</b></h3>
+          <h3 class="Black">₹52,990&nbsp;&nbsp;<del class="gray">₹99,900</del>&nbsp;&nbsp;47% off</h3>
+          <button class="add-to-cart">Add to Cart</button>
+        </td>
+      </tr>
+    </table>
+  </center>
+
+  <center>
+    <table>
+      <tr>
+        <td class="img">
+          <img src="images/FF1.png" alt="Voltas Refrigerator" />
+          <h3>voltas Beko by A Tata Product 563 L Frost Free Side by <br />Side Refrigerator</h3>
+          <h3 style="color:green;">Extra ₹1000 off</h3>
+          <h3><span class="green">4.4⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">447 Ratings & 49 Reviews</b></h3>
+          <h3 class="Black">₹51,990&nbsp;&nbsp;<del class="gray">₹89,990</del>&nbsp;&nbsp;42% off</h3>
+          <button class="add-to-cart">Add to Cart</button>
+        </td>
+
+        <td class="img">
+          <img src="images/FF2.png" alt="SAMSUNG Refrigerator" />
+          <h3>SAMSUNG 633 L Frost Free Side by Side 3 Star Refrigerator <br />with Convertible 5-in-1 Digital Inverter WiFi Embedded</h3>
+          <h3 style="color:green;">Extra ₹1000 off</h3>
+          <h3><span class="green">4.4⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">136 Ratings & 16 Reviews</b></h3>
+          <h3 class="Black">₹1,06,000&nbsp;&nbsp;<del class="gray">₹1,52,000</del>&nbsp;&nbsp;30% off</h3>
+          <button class="add-to-cart">Add to Cart</button>
+        </td>
+
+        <td class="img">
+          <img src="images/FF3.png" alt="LG Refrigerator" />
+          <h3>LG 655 L Frost Free Side by Side Refrigerator</h3>
+          <h3 style="color:green;">Extra ₹6000 off</h3>
+          <h3><span class="green">4.3⭐</span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="gray">154 Ratings & 11 Reviews</b></h3>
+          <h3 class="Black">₹69,990&nbsp;&nbsp;<del class="gray">₹1,20,699</del>&nbsp;&nbsp;42% off</h3>
+          <button class="add-to-cart">Add to Cart</button>
+        </td>
+      </tr>
+    </table>
+  </center>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const td = button.closest(".img");
+        const name = td.querySelectorAll("h3")[0]?.textContent.trim();
+        const image = td.querySelector("img")?.getAttribute("src");
+
+        // Extract price and original price from .Black h3 using ₹ symbol
+        const priceLine = td.querySelector(".Black")?.textContent || "";
+        const prices = priceLine.match(/₹[\d,]+/g);
+        const price = prices?.[0]?.replace(/[^\d]/g, "") || "0";
+        const originalPrice = prices?.[1]?.replace(/[^\d]/g, "") || price;
+
+        const product = {
+          name: name,
+          price: parseInt(price),
+          originalPrice: parseInt(originalPrice),
+          image: image,
+          quantity: 1
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existingIndex = cart.findIndex(item => item.name === product.name);
+        if (existingIndex !== -1) {
+          cart[existingIndex].quantity += 1;
+        } else {
+          cart.push(product);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${product.name} added to cart!`);
+      });
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchQuery = localStorage.getItem("searchQuery");
+    if (!searchQuery) return;
+  
+    const items = document.querySelectorAll("td.img");
+    const matchedItems = [];
+  
+    items.forEach(td => {
+      const title = td.querySelector("h3")?.textContent.toLowerCase();
+      if (title && title.includes(searchQuery.toLowerCase())) {
+        matchedItems.push(td.cloneNode(true));
+      }
+    });
+  
+    if (matchedItems.length > 0) {
+      const resultContainer = document.createElement("div");
+      resultContainer.style.margin = "50px auto";
+      resultContainer.style.maxWidth = "1100px";
+      resultContainer.style.padding = "20px";
+      resultContainer.style.textAlign = "center";
+      resultContainer.style.borderTop = "2px solid #ccc";
+  
+      const title = document.createElement("h2");
+      title.textContent = `Search Result for "${searchQuery}"`;
+      title.style.marginBottom = "20px";
+      title.style.color = "darkslateblue";
+  
+      const table = document.createElement("table");
+      const tr = document.createElement("tr");
+  
+      matchedItems.forEach(clone => {
+        const td = document.createElement("td");
+        td.appendChild(clone);
+        tr.appendChild(td);
+      });
+  
+      table.appendChild(tr);
+      table.style.margin = "0 auto";
+  
+      resultContainer.appendChild(title);
+      resultContainer.appendChild(table);
+      document.body.appendChild(resultContainer);
+  
+      resultContainer.scrollIntoView({ behavior: "smooth" });
+    } else {
+      alert(`No matching product found for "${searchQuery}".`);
+    }
+  
+    localStorage.removeItem("searchQuery");
+  });
+  </script>
+    
+</body>
+</html>
